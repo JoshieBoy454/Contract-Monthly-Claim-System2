@@ -3,16 +3,29 @@ using Microsoft.EntityFrameworkCore;
 using Contract_Monthly_Claim_System2.Data;
 namespace Contract_Monthly_Claim_System2
 {
+    /// <summary>
+    /// Joshua Gain 
+    /// ST10369044
+    /// PROG6212
+    /// Group 1
+    /// </summary>
+    /// <Refernces>
+    /// Link:https://www.w3schools.com/asp/razor_syntax.asp
+    /// Link:https://www.youtube.com/watch?v=xuFdrXqpPB0
+    /// Link:
+    /// Link:
+    /// Link:
+    /// </Refernces>
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connectionString = builder.Configuration.GetConnectionString("CMCSContextConnection") ?? throw new InvalidOperationException("Connection string 'CMCSContextConnection' not found.");
+            //var connectionString = builder.Configuration.GetConnectionString("CMCSContextConnection") ?? throw new InvalidOperationException("Connection string 'CMCSContextConnection' not found.");
 
-            builder.Services.AddDbContext<CMCSContext>(options => options.UseSqlServer(connectionString));
+            //builder.Services.AddDbContext<CMCSContext>(options => options.UseSqlServer(connectionString));
 
-            builder.Services.AddDefaultIdentity<CMCSUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CMCSContext>();
+            //builder.Services.AddDefaultIdentity<CMCSUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CMCSContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

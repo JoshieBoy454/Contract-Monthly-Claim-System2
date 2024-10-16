@@ -23,6 +23,16 @@ namespace Contract_Monthly_Claim_System2.Controllers
             return View();
         }
 
+        public IActionResult Claim()
+        {
+            return View();
+        }
+
+        public IActionResult Manage()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
