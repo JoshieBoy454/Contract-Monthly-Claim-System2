@@ -33,9 +33,9 @@
             @foreach (var item in Model)
             {
                 <tr>
-                   @*  <td>
+                    <td>
                         @item.ID
-                    </td> *@
+                    </td>
                     <td>
                         @item.Name
                     </td>
@@ -46,10 +46,17 @@
                         @item.Hours
                     </td>
                     <td>
-                        <a href="#">Download</a>
+                        @if (!string.IsNullOrEmpty(item.Document))
+                        {
+                            <a href="@Url.Content(item.Document)" download>Download</a>
+                        }
+                        else
+                        {
+                            <span>No Document</span>
+                        }
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-primary mt-4">Approved</button>
+                        
                     </td>
                 </tr>
             }
