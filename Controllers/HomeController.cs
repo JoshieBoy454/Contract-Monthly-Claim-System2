@@ -38,9 +38,10 @@ namespace Contract_Monthly_Claim_System2.Controllers
 
             return RedirectToAction("Claim");// to change to a page that will display the claims submitted by specific lecturer
         }
-        public IActionResult Manage()
+        public IActionResult ClaimHub()
         {
-            return View();
+            var allClaims = _context.Claims.ToList();
+            return View(allClaims);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

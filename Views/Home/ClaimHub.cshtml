@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "ClaimHub";
+}
+@model List<Contract_Monthly_Claim_System.Models2.CreateClaim>;
+
+<div class="text-center">
+    <h1 class="display-4">Claim Hub</h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Hours
+                </th>
+                <th>
+                    Document
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                   @*  <td>
+                        @item.ID
+                    </td> *@
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Surname
+                    </td>
+                    <td>
+                        @item.Hours
+                    </td>
+                    <td>
+                        <a href="#">Download</a>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary mt-4">Approved</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -2,12 +2,12 @@
 {
     public class CreateClaim
     {
-        public string? name { get; set; }
-        public string? surname { get; set; }
-        public double hours { get; set; }
-        public double rate { get; set; }
-        public string? notes { get; set; }
-        // public var document { get; set; }
-        public int approval { get; set; }
+        public string? Name { get; set; }
+        public string? Surname { get; set; }
+        public double Hours { get; set; }
+        public double Rate { get; set; }
+        public string? Notes { get; set; }
+        public IFormFile? Document { get; set; }
+        public int Approval { get; set; }
     }
 }
