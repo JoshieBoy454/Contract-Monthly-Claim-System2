@@ -6,27 +6,24 @@
 <div class="text-center">
     <h1 class="display-4">Submit Claim</h1>
 </div>
-<form>
-    <label>ID</label>
-    <input type="number" name="ID" class="form-control " />
-
-    <label class="mt-4">Name</label>
-    <input type="text" name="Name" class="form-control " />
+<form asp-action="ClaimForm" asp-controller="Home">
+    <label>Name</label>
+    <input type="text" name="Name" class="form-control" asp-for="name" placeholder="John"/>
 
     <label class="mt-4">Surname</label>
-    <input type="text" name="Surname" class="form-control " />
+    <input type="text" name="Surname" class="form-control" asp-for="surname" placeholder="Doe"/>
 
     <label class="mt-4">Hours</label>
-    <input type="number" name="Hours" class="form-control " id="file" step="0.1" />
+    <input type="number" name="Hours" class="form-control" step="0.1" asp-for="hours" placeholder="0.0"/>
 
     <label class="mt-4">Hourly Rate</label>
-    <input type="number" name="rate" class="form-control " id="file" step="0.1" />
+    <input type="number" name="rate" class="form-control" step="0.01" asp-for="rate" placeholder="0.00"/>
 
     <label class="mt-4">Additional Notes</label>
-    <input type="number" name="notes" class="form-control " id="file" step="0.1" />
+    <input type="text" name="notes" class="form-control" asp-for="notes" placeholder="Additional notes to support claim"/>
 
     <label class="mt-4">Documentation</label>
-    <input type="file" name="Document" class="form-control " id="file" />
+    <input type="file" name="Document" class="form-control" id="file" />
 
     <button type="submit" class="btn btn-primary mt-4">Submit</button>
 </form>

@@ -1,3 +1,4 @@
+using Contract_Monthly_Claim_System.Models2;
 using Contract_Monthly_Claim_System2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -8,9 +9,12 @@ namespace Contract_Monthly_Claim_System2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ClaimDBContext _context;
+
+        public HomeController(ILogger<HomeController> logger, ClaimDBContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -27,7 +31,13 @@ namespace Contract_Monthly_Claim_System2.Controllers
         {
             return View();
         }
+        public IActionResult ClaimForm(CreateClaim model)
+        {
+            _context.Claims.Add(model);
+            _context.SaveChanges();
 
+            return RedirectToAction("Claim");// to change to a page that will display the claims submitted by specific lecturer
+        }
         public IActionResult Manage()
         {
             return View();

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Contract_Monthly_Claim_System2.Data;
+using Contract_Monthly_Claim_System2.Models;
 namespace Contract_Monthly_Claim_System2
 {
     /// <summary>
@@ -23,7 +24,7 @@ namespace Contract_Monthly_Claim_System2
             var builder = WebApplication.CreateBuilder(args);
             //var connectionString = builder.Configuration.GetConnectionString("CMCSContextConnection") ?? throw new InvalidOperationException("Connection string 'CMCSContextConnection' not found.");
 
-            //builder.Services.AddDbContext<CMCSContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<ClaimDBContext>(options => options.UseInMemoryDatabase("CMCSdb"));
 
             //builder.Services.AddDefaultIdentity<CMCSUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CMCSContext>();
 
