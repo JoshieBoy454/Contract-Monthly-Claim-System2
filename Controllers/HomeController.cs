@@ -1,4 +1,3 @@
-using Contract_Monthly_Claim_System.Models2;
 using Contract_Monthly_Claim_System2.Models;
 using Elfie.Serialization;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +33,46 @@ namespace Contract_Monthly_Claim_System2.Controllers
         {
             return View();
         }
+        
+        public IActionResult Manage()
+        {
+           var claims = _context.Claims.ToList();
+           return View(claims);
+        }
+        [Route("Home/ManageClaim/{id}")]
+        public IActionResult ManageClaim(int id)
+        {
+            var claim = _context.Claims.FirstOrDefault(c => c.ID == id);
+            if (claim == null)
+            {
+                return View("Manage");
+            }
+            return View(claim);
+        }
+
+        public IActionResult ApproveClaim(int id)
+        {
+            var claim = _context.Claims.FirstOrDefault(c => c.ID == id);
+            if (claim != null)
+            {
+                claim.Approval = 1; // Set to Approved
+                _context.SaveChanges(); // Save the change in the database
+            }
+
+            return RedirectToAction("ManageClaim", new { id });
+        }
+
+        public IActionResult RejectClaim(int id)
+        {
+            var claim = _context.Claims.FirstOrDefault(c => c.ID == id);
+            if (claim != null)
+            {
+                claim.Approval = 2; // Set to Rejected
+                _context.SaveChanges(); // Save the change in the database
+            }
+
+            return RedirectToAction("ManageClaim", new { id });
+        }
         public IActionResult ClaimForm(CreateClaim model)
         {
             if (model.DocumentFile != null && model.DocumentFile.Length > 0)
@@ -49,8 +88,15 @@ namespace Contract_Monthly_Claim_System2.Controllers
                 }
                 model.Document = $"/uploads/{fileName}";
             }
-            _context.Claims.Add(model);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Claims.Add(model);
+                _context.SaveChanges();
+            }
+            else
+            {
+                return View("Claim", model);
+            }
 
             return RedirectToAction("ClaimHub");
         }

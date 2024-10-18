@@ -1,4 +1,4 @@
-﻿using Contract_Monthly_Claim_System.Models2;
+﻿using Contract_Monthly_Claim_System2.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Contract_Monthly_Claim_System2.Models

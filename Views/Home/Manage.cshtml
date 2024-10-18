@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Admin Manage";
+}
+@model List<Contract_Monthly_Claim_System2.Models.CreateClaim>;
+
+<div class="text-center">
+    <h1 class="display-4">Manage Claims</h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("ManageClaim", "Home", new { id = item.ID })" class="btn btn-primary mt-4">@item.ID</a>
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Surname
+                    </td>
+                    <td>
+                        <div class="progress">
+                            @if (item.Approval == 0)
+                            {
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Pending</div>
+                            }
+                            else if (item.Approval == 1)
+                            {
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Approved</div>
+                            }
+                            else if (item.Approval == 2)
+                            {
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">Rejected</div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

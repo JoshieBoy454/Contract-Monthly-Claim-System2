@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "ManageClaim";
+}
+@model Contract_Monthly_Claim_System2.Models.CreateClaim
+
+<div class="text-center">
+    <h1>Claim Details ID: #@Model.ID</h1>
+    <p class="mt-4">Name: @Model.Name</p>
+    <p class="mt-4">Surname: @Model.Surname</p>
+    <p class="mt-4">Hours: @Model.Hours</p>
+    <p class="mt-4">Rate: @Model.Rate</p>
+    <p class="mt-4">Notes: @Model.Notes</p>
+    <p class="mt-4">
+        Status:
+        @if (Model.Approval == 0)
+        {
+            <span class="badge bg-warning">Pending</span>
+        }
+        else if (Model.Approval == 1)
+        {
+            <span class="badge bg-success">Approved</span>
+        }
+        else if (Model.Approval == 2)
+        {
+            <span class="badge bg-danger">Rejected</span>
+        }
+    </p>
+    <p class="mt-4">
+        Document:
+        @if (!string.IsNullOrEmpty(Model.Document))
+        {
+            <a href="@Model.Document" target="_blank">View Document</a>
+        }
+        else
+        {
+            <span>No document uploaded</span>
+        }
+    </p>
+</div>
+<div class="text-center">
+    <form asp-controller="Home" asp-action="ApproveClaim" method="post" class="d-inline">
+        <input type="hidden" name="id" value="@Model.ID" />
+        <button type="submit" class="btn btn-success">Approve</button>
+    </form>
+    <form asp-controller="Home" asp-action="RejectClaim" method="post" class="d-inline">
+        <input type="hidden" name="id" value="@Model.ID" />
+        <button type="submit" class="btn btn-danger">Reject</button>
+    </form>
+</div>

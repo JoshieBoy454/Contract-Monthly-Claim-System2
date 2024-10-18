@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Contract_Monthly_Claim_System2.Data;
 using Contract_Monthly_Claim_System2.Models;
+using Contract_Monthly_Claim_System2.Areas.Identity.Data;
 namespace Contract_Monthly_Claim_System2
 {
     /// <summary>
@@ -22,15 +23,17 @@ namespace Contract_Monthly_Claim_System2
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            //var connectionString = builder.Configuration.GetConnectionString("CMCSContextConnection") ?? throw new InvalidOperationException("Connection string 'CMCSContextConnection' not found.");
+
+            //var connectionString = builder.Configuration.GetConnectionString("CMCSContextConnection") ?? throw new InvalidOperationException("Connection string 'CMCSContextConnection' not found.");//
+
+            //builder.Services.AddDefaultIdentity<CMCSUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CMCSContext>();//
 
             builder.Services.AddDbContext<ClaimDBContext>(options => options.UseInMemoryDatabase("CMCSdb"));
 
-            //builder.Services.AddDefaultIdentity<CMCSUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<CMCSContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            //builder.Services.AddRazorPages();//
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -51,6 +54,7 @@ namespace Contract_Monthly_Claim_System2
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+            //app.MapRazorPages();//
 
             app.Run();
         }

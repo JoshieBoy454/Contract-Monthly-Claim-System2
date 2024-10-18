@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Contract_Monthly_Claim_System.Models2
+namespace Contract_Monthly_Claim_System2.Models
 {
     public class CreateClaim
     {
