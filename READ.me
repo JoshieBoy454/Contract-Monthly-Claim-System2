@@ -1,0 +1,32 @@
+**Database Setup**
+Open SQL Server Management Studio (SSMS) and connect to your SQL Server instance.
+In the Object Explorer, right-click on the Databases node and select New Database.
+Name the database CMCSdb and click OK to create it.
+
+Create the Claims Table
+Open a new query window in SSMS (by clicking on New Query).
+
+Copy and paste the following SQL script into the query window:
+
+sql
+Copy code
+USE [CMCSdb]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Claims] (
+    [Id]       INT            NOT NULL PRIMARY KEY, -- Added PRIMARY KEY constraint
+    [Name]     NVARCHAR (50)  NULL,
+    [Surname]  NVARCHAR (50)  NULL,
+    [Hours]    DECIMAL (18)   NULL,
+    [Rate]     DECIMAL (18)   NULL,
+    [Notes]    NVARCHAR (MAX) NULL,
+    [Document] NVARCHAR (255) NULL,
+    [Approval] INT            NULL
+);
+Execute the script by clicking on the Execute button .
