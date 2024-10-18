@@ -3,48 +3,117 @@
 }
 @model List<Contract_Monthly_Claim_System2.Models.CreateClaim>;
 
-<div class="text-center">
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f7f8fa;
+        color: #333;
+    }
+
+    h1.display-4, h1 {
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #2c3e50;
+    }
+
+    .table {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    td, th {
+        padding: 16px;
+        text-align: center;
+    }
+
+    .btn-primary, .btn-secondary, .btn-success, .btn-danger {
+        padding: 12px 20px;
+        font-size: 1rem;
+        border-radius: 6px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    form label {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    form input {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .progress {
+        height: 25px;
+    }
+
+    .progress-bar {
+        font-size: 1rem;
+    }
+
+    .text-center {
+        margin-bottom: 30px;
+    }
+
+    /* Custom spacing for all views */
+    .container {
+        padding: 40px;
+    }
+
+    .mt-4, .btn {
+        margin-top: 20px;
+    }
+
+</style>
+
+<div class="container text-center">
     <h1 class="display-4">Claim Hub</h1>
     <br />
     <table class="table">
         <thead>
             <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Surname
-                </th>
-                <th>
-                    Hours
-                </th>
-                <th>
-                    Document
-                </th>
-                <th>
-                    Status
-                </th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Hours</th>
+                <th>Document</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @item.ID
-                    </td>
-                    <td>
-                        @item.Name
-                    </td>
-                    <td>
-                        @item.Surname
-                    </td>
-                    <td>
-                        @item.Hours
-                    </td>
+                    <td> @item.ID </td>
+                    <td> @item.Name </td>
+                    <td> @item.Surname </td>
+                    <td> @item.Hours </td>
                     <td>
                         @if (!string.IsNullOrEmpty(item.Document))
                         {

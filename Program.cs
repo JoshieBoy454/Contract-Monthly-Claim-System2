@@ -14,9 +14,12 @@ namespace Contract_Monthly_Claim_System2
     /// <Refernces>
     /// Link:https://www.w3schools.com/asp/razor_syntax.asp
     /// Link:https://www.youtube.com/watch?v=xuFdrXqpPB0
-    /// Link:
-    /// Link:
-    /// Link:
+    /// Link:https://www.youtube.com/watch?v=xuFdrXqpPB0&t=857s
+    /// Link:https://www.youtube.com/watch?v=wzaoQiS_9dI&list=TLPQMTYxMDIwMjQtyPiQEOad5g&index=3
+    /// Link:https://www.youtube.com/watch?v=wzaoQiS_9dI&list=TLPQMTYxMDIwMjQtyPiQEOad5g&index=3
+    /// Link:https://www.w3schools.com/html/html_form_input_types.asp
+    /// Link:https://learn.microsoft.com/en-us/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver16
+    /// Link:https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-8.0
     /// </Refernces>
     public class Program
     {
