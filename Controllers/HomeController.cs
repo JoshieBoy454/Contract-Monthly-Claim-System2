@@ -27,7 +27,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Claim()
         {
             return View();
