@@ -33,6 +33,24 @@ namespace Contract_Monthly_Claim_System2.Controllers
             return View();
         }
 
+        public IActionResult Loginlecturere()
+        {
+
+            return View();
+        }
+
+        public IActionResult LoginManager()
+        {
+
+            return View();
+        }
+
+        public IActionResult LoginHR()
+        {
+
+            return View();
+        }
+
         public IActionResult Manage()
         {
             try
@@ -76,7 +94,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
                 {
                     claim.Approval = 1;
                     _context.SaveChanges();
-                }
+                } 
                 return RedirectToAction("ManageClaim", new { id });
             }
             catch (Exception ex)

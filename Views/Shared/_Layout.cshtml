@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Contract_Monthly_Claim_System2.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,15 +23,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Claim">Submit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ClaimHub">Claim Hub</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Manage">Manage Claim</a>
-                        </li>
+                        @if(Role.Roles == "Lecturer")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Claim">Submit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ClaimHub">Claim Hub</a>
+                            </li>
+                        }else if(Role.Roles == "Admin")
+                            {
+                                <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Manage">Manage Claim</a>
+                                </li>
+                            }
+                        
                     </ul>
                 </div>
             </div>
