@@ -35,23 +35,53 @@ namespace Contract_Monthly_Claim_System2.Controllers
         }
         public IActionResult ValidateLecturer(Role Roles)
         {
-            Role.Roles currentRoles = Role.Roles.Lecturer;
-            ViewBag.currentRoles = currentRoles;
-            return View("Claim");
+            var lecturerUsername = "lecturer";
+            var lecturerPassword = "lecturer";
+
+            if (Roles.username == lecturerUsername && Roles.password == lecturerPassword)
+            {
+                Role.Roles currentRoles = Role.Roles.Lecturer;
+                ViewBag.currentRoles = currentRoles;
+                return View("Claim");
+            } 
+            else
+            {
+                return View("Failedlogin");
+            }
         }
 
         public IActionResult ValidateManager(Role Roles) 
         {
-            Role.Roles currentRoles = Role.Roles.Admin;
-            ViewBag.currentRoles = currentRoles;
-            return View("Manage");
+            var adminUsername = "admin";
+            var adminPassword = "admin";
+
+            if (Roles.username == adminUsername && Roles.password == adminPassword)
+            {
+                Role.Roles currentRoles = Role.Roles.Admin;
+                ViewBag.currentRoles = currentRoles;
+                return View("Claim");
+            }
+            else
+            {
+                return View("Failedlogin");
+            }
         }
 
         public IActionResult ValidateHR(Role Roles) 
         {
-            Role.Roles currentRoles = Role.Roles.Hr;
-            ViewBag.currentRoles = currentRoles;
-            return View("ReportView");
+            var hrUsername = "hr";
+            var hrPassword = "hr";
+
+            if (Roles.username == hrUsername && Roles.password == hrPassword)
+            {
+                Role.Roles currentRoles = Role.Roles.HR;
+                ViewBag.currentRoles = currentRoles;
+                return View("Claim");
+            }
+            else
+            {
+                return View("Failedlogin");
+            }
         }
 
         public IActionResult LoginLecturer()
