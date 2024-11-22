@@ -23,21 +23,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @if(Role.Roles == "Lecturer")
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Claim">Submit</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ClaimHub">Claim Hub</a>
-                            </li>
-                        }else if(Role.Roles == "Admin")
-                            {
-                                <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Manage">Manage Claim</a>
-                                </li>
-                            }
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Claim">Submit</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ClaimHub">Claim Hub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Manage">Manage Claim</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -60,3 +54,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+

@@ -33,22 +33,22 @@ namespace Contract_Monthly_Claim_System2.Controllers
             return View();
         }
 
-        public IActionResult Loginlecturere()
+        public IActionResult LoginLecturer()
         {
 
-            return View();
+            return View("LecturerLogin");
         }
 
         public IActionResult LoginManager()
         {
 
-            return View();
+            return View("ManagerLogin");
         }
 
         public IActionResult LoginHR()
         {
 
-            return View();
+            return View("HRLogin");
         }
 
         public IActionResult Manage()
