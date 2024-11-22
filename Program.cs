@@ -20,6 +20,14 @@ namespace Contract_Monthly_Claim_System2
     /// Link:https://www.w3schools.com/html/html_form_input_types.asp
     /// Link:https://learn.microsoft.com/en-us/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-ver16
     /// Link:https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-8.0
+    /// Link:https://www.w3schools.com/cssref/pr_text_text-decoration.php
+    /// Link:https://www.w3schools.com/cssref/playdemo.php?filename=playcss_text-decoration-line
+    /// Link:https://uiverse.io/Yaya12085/short-panda-24
+    /// Link:
+    /// Link:
+    /// Link:
+    /// Link:
+    /// 
     /// </Refernces>
     public class Program
     {
