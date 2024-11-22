@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 namespace Contract_Monthly_Claim_System2.Controllers
 {
@@ -258,6 +260,48 @@ namespace Contract_Monthly_Claim_System2.Controllers
             return View(model);
         }
 
+        public IActionResult Report(int id)
+        {
+            var claim = _context.Claims.FirstOrDefault(c => c.ID == id);
+            if (claim == null)
+            {
+                return View("Error");
+            }
+
+            //Generate Pdf
+            string htmlContent = $@"
+            <html>
+            <head>
+                <h1>Claim Report</h1>
+                <p><Strong>Name:</Strong> {claim.Name}</p>
+                <p><Strong>Surname:</Strong> {claim.Surname}</p>
+                <p><Strong>Hours:</Strong> {claim.Hours}</p>
+                <p><Strong>Rate:</Strong> {claim.Rate}</p>
+                <p><Strong>Notes:</Strong> {claim.Notes}</p>
+                <p><Strong>Total:</Strong> {claim.Total}</p>
+            </body>
+            </html>";
+
+            var converter = new BasicConverter(new PdfTools());
+            var doc = new HtmlToPdfDocument()
+            {
+                GlobalSettings = {
+                    ColorMode = ColorMode.Color,
+                    Orientation = Orientation.Portrait,
+                    PaperSize = PaperKind.A4Plus,
+                },
+                Objects = {
+                    new ObjectSettings()
+                    {
+                        HtmlContent = htmlContent,
+                        WebSettings = { DefaultEncoding = "utf-8" }
+                    }
+                }
+            };
+            byte[] pdf = converter.Convert(doc);
+
+            return File(pdf,"application/pdf", "Report().pdf");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
