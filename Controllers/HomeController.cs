@@ -137,7 +137,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
                 return View("Error");
             }
         }
-
+        
         public IActionResult ApproveClaim(int id)
         {
             try
@@ -145,9 +145,9 @@ namespace Contract_Monthly_Claim_System2.Controllers
                 var claim = _context.Claims.FirstOrDefault(c => c.ID == id);
                 if (claim != null)
                 {
-                    claim.Approval = 1;
-                    _context.SaveChanges();
-                } 
+                        claim.Approval = 1;
+                        _context.SaveChanges();
+                }
                 return RedirectToAction("ManageClaim", new { id });
             }
             catch (Exception ex)
@@ -185,7 +185,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
                 if (model.DocumentFile != null && model.DocumentFile.Length > 0)
                 {
                     var fileName = Path.GetFileName(model.DocumentFile.FileName);
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", model.DocumentFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", fileName);
 
                     Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads"));
 
@@ -196,14 +196,34 @@ namespace Contract_Monthly_Claim_System2.Controllers
                     model.Document = $"/uploads/{fileName}";
                 }
 
-                if (ModelState.IsValid)
+                // Define the hardcoded limits for automatic claim approval or rejection
+                const double MinHours = 160;
+                const double MaxHours = 200;
+                const double MinRate = 91;
+                const double MaxRate = 112;
+                const double MinTotal = 14000;
+                const double MaxTotal = 22000;
+
+                if (model.Hours < MinHours || model.Hours > MaxHours || model.Rate < MinRate || model.Rate > MaxRate)
                 {
-                    _context.Claims.Add(model);
-                    _context.SaveChanges();
+                    ViewBag.Message = "Claim has been automatically rejected, pending review.";
+                }
+                else if (model.Total >= MinTotal && model.Total <= MaxTotal)
+                {
+                    ViewBag.Message = "Claim has been automatically approved.";
                 }
                 else
                 {
-                    return View("Claim", model);
+                    ViewBag.Message = "Claim is pending review.";
+                }
+
+                if (ModelState.IsValid)
+                {
+                    _context.Claims.Add(model);
+                }
+                else
+                {
+                    return View("Claim", model); 
                 }
 
                 return RedirectToAction("ClaimHub");
@@ -211,7 +231,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while submitting the claim form.");
-                return View("Error");
+                return View("Error"); 
             }
         }
 
