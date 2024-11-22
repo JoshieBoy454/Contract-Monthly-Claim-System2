@@ -59,7 +59,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
             {
                 Role.Roles currentRoles = Role.Roles.Admin;
                 ViewBag.currentRoles = currentRoles;
-                return View("Claim");
+                return RedirectToAction("Manage");
             }
             else
             {
@@ -76,7 +76,7 @@ namespace Contract_Monthly_Claim_System2.Controllers
             {
                 Role.Roles currentRoles = Role.Roles.HR;
                 ViewBag.currentRoles = currentRoles;
-                return View("Claim");
+                return RedirectToAction("Manage");
             }
             else
             {
