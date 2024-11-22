@@ -251,13 +251,17 @@ namespace Contract_Monthly_Claim_System2.Controllers
                     claim.Rate = model.Rate;
                     claim.Notes = model.Notes;
                     claim.Total = model.Hours * model.Rate;
+
+                    _context.SaveChanges();
+
+                    return RedirectToAction("ManageClaim", new { id = model.ID});
                 }
                 else
                 {
                     return View("Error");
                 }
             }
-            return View(model);
+            return View("EditClaim");
         }
 
         public IActionResult Report(int id)
