@@ -206,20 +206,21 @@ namespace Contract_Monthly_Claim_System2.Controllers
 
                 if (model.Hours < MinHours || model.Hours > MaxHours || model.Rate < MinRate || model.Rate > MaxRate)
                 {
-                    ViewBag.Message = "Claim has been automatically rejected, pending review.";
+                    model.Approval = 2;
                 }
                 else if (model.Total >= MinTotal && model.Total <= MaxTotal)
                 {
-                    ViewBag.Message = "Claim has been automatically approved.";
+                    model.Approval = 1;
                 }
                 else
                 {
-                    ViewBag.Message = "Claim is pending review.";
+                    model.Approval = 0;
                 }
 
                 if (ModelState.IsValid)
                 {
                     _context.Claims.Add(model);
+                    _context.SaveChanges();
                 }
                 else
                 {
