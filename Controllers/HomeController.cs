@@ -1,5 +1,6 @@
 using Contract_Monthly_Claim_System2.Models;
 using Elfie.Serialization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.IO;
@@ -31,6 +32,26 @@ namespace Contract_Monthly_Claim_System2.Controllers
         public IActionResult Claim()
         {
             return View();
+        }
+        public IActionResult ValidateLecturer(Role Roles)
+        {
+            Role.Roles currentRoles = Role.Roles.Lecturer;
+            ViewBag.currentRoles = currentRoles;
+            return View("Claim");
+        }
+
+        public IActionResult ValidateManager(Role Roles) 
+        {
+            Role.Roles currentRoles = Role.Roles.Admin;
+            ViewBag.currentRoles = currentRoles;
+            return View("Manage");
+        }
+
+        public IActionResult ValidateHR(Role Roles) 
+        {
+            Role.Roles currentRoles = Role.Roles.Hr;
+            ViewBag.currentRoles = currentRoles;
+            return View("ReportView");
         }
 
         public IActionResult LoginLecturer()

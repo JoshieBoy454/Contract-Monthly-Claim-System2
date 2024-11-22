@@ -171,6 +171,12 @@
                 box-sizing: border-box;
             }
 
+            .login-container input:focus {
+                outline: 2px solid #28a745;
+                border-color: #28a745;
+                box-shadow: 0 0 5px rgba(40, 167, 69, 1);
+            }
+
             .login-container button {
                 background-color: #28a745;
                 color: #fff;
@@ -192,7 +198,7 @@
             }
 
                 .login-container .links a {
-                    color: #007bff;
+                    color: #28a745;
                     text-decoration: none;
                     margin: 0 5px;
                 }
@@ -227,7 +233,7 @@
     <div class="main-content">
         <div class="login-container">
             <h1>Login</h1>
-            <form asp-controller="Home" asp-action="LoginHR" class="container">
+            <form asp-controller="Home" asp-action="ValidateHR" class="container">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" asp-for="username" placeholder="Enter your username" required>
 
