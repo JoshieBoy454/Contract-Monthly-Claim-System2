@@ -14,5 +14,6 @@ namespace Contract_Monthly_Claim_System2.Models
         public IFormFile? DocumentFile { get; set; }
         public string? Document { get; set; }
         public int Approval { get; set; }
+        public double Total { get; set; }
     }
 }

@@ -148,6 +148,9 @@
     <label class="mt-4">Hourly Rate</label>
     <input type="number" name="rate" class="form-control" step="0.01" asp-for="Rate" placeholder="0.00"/>
 
+    <label class="mt-4">Total Payment</label>
+    <input type="number" name="totalPayment" class="form-control" step="0.01" id="Total" asp-for="Total" placeholder="0.00" readonly/>
+
     <label class="mt-4">Additional Notes</label>
     <input type="text" name="notes" class="form-control" asp-for="Notes" placeholder="Additional notes to support claim"/>
 
@@ -156,3 +159,32 @@
 
     <button type="submit" class="btn btn-primary mt-4">Submit</button>
 </form>
+
+@* jQuesry *@
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Used to calculate the total payment automatically
+            $('#Hours, #Rate').on('input', function () {
+                var Hours = parseFloat($('#Hours').val()) || 0;
+                var Rate = parseFloat($('#Rate').val()) || 0;
+
+                // Calculates the total payment
+                var Total = Hours * Rate;
+                $('#Total').val(Total.toFixed(2));
+            });
+
+            // Validates
+            $('form').on('submit', function (e) {
+                var Hours = parseFloat($('#Hours').val());
+                var Rate = parseFloat($('#Rate').val());
+
+                if (isNaN(Hours) || isNaN(Rate) || Rours <= 0 || Rate <= 0) {
+                    alert('Please enter valid positive values for Hours and Hourly Rate.');
+                    e.preventDefault(); 
+                }
+            });
+        });
+    </script>
+}

@@ -178,6 +178,8 @@ namespace Contract_Monthly_Claim_System2.Controllers
         {
             try
             {
+                model.Total = model.Hours * model.Rate;
+
                 if (model.DocumentFile != null && model.DocumentFile.Length > 0)
                 {
                     var fileName = Path.GetFileName(model.DocumentFile.FileName);
