@@ -227,7 +227,37 @@ namespace Contract_Monthly_Claim_System2.Controllers
             }
         }
 
-        
+        public IActionResult EditClaim(CreateClaim model)
+        {
+            var claim = _context.Claims.FirstOrDefault(c => c.ID == model.ID);
+            if (claim == null)
+            {
+                return View("Error");
+            }
+            return View(claim);
+        }
+        public IActionResult UpdateClaim(CreateClaim model)
+        {
+            if (ModelState.IsValid)
+            {
+                var claim = _context.Claims.FirstOrDefault(c => c.ID == model.ID);
+                if (claim != null)
+                {
+                    claim.Name = model.Name;
+                    claim.Surname = model.Surname;
+                    claim.Hours = model.Hours;
+                    claim.Rate = model.Rate;
+                    claim.Notes = model.Notes;
+                    claim.Total = model.Hours * model.Rate;
+                }
+                else
+                {
+                    return View("Error");
+                }
+            }
+            return View(model);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
