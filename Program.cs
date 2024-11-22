@@ -23,8 +23,8 @@ namespace Contract_Monthly_Claim_System2
     /// Link:https://www.w3schools.com/cssref/pr_text_text-decoration.php
     /// Link:https://www.w3schools.com/cssref/playdemo.php?filename=playcss_text-decoration-line
     /// Link:https://uiverse.io/Yaya12085/short-panda-24
-    /// Link:
-    /// Link:
+    /// Link:https://stackoverflow.com/questions/7709001/html-actionlink-vs-url-action-in-asp-net-razor
+    /// Link:https://www.w3schools.com/jquery/default.asp
     /// Link:
     /// Link:
     /// 
